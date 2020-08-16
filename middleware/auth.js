@@ -19,18 +19,6 @@ const auth = async (req, res, next) => {
     }
 }
 
-//  middleware to authenticate user roles so as to restrict their access
-function authRole(role) {
-    return async (req, res, next) => {
-      const { email } = req.body;
-      const user = await User.findOne({ email });
-      if (user.role !== role) {
-        return res.status(401).send('Not allowed')
-      }
-  
-      next()
-    }
-  }
 
-module.exports = { auth, authRole }
+module.exports = auth 
 
