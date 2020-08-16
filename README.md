@@ -1,5 +1,12 @@
-# Basic Cloud File Storage System
+# SUA Connectify
 This is a web application that helps with the logistics of placing orders for products and transporting them to the desired destination in a seamless manner. With this app, users can post their delivery order and have it picked up by trusted dispatch riders to be conveyed in no time to the waiting customers.
+
+## Technologies
+-Node.js
+-Express
+-MongoDB & Mongoose
+-jsonwebtoken Authentication
+-BCrypt Hashing
 
 ### Required Features
 1. User can sign up.
@@ -13,8 +20,9 @@ This is a web application that helps with the logistics of placing orders for pr
 
 
 
-
 ### API Routes
+Test api endpoints with curl or postman
+
 S/N | Verb   | Endpoint         | Description                    |
 ---:| -------|------------------|--------------------------------|
   1 | Post   | /signup          | Create a user account          |
@@ -26,8 +34,8 @@ S/N | Verb   | Endpoint         | Description                    |
   7 | Put    | /user/order      | User marks order as received   |
   8 | Get    | /user/all        | User gets all delivery record  |
 
-###Usage
-####Installation
+### Usage
+#### Installation
 Install the dependencies
 
 $ npm install
