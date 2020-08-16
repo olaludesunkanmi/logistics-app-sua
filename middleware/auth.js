@@ -6,26 +6,25 @@ const auth = async (req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '')
         const decoded = jwt.verify(token, 'secret key')
-        const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
-
+        const user = await User.findOne({ _id: decoded.userId })
         if (!user) {
-            throw new Error()
+            throw new Error('Please authenticate');
         }
 
         req.token = token
         req.user = user
-        next()
+      return next()
     } catch (e) {
-        res.status(401).send({ error: 'Please authenticate.' })
+        return res.status(401).send(e)
     }
-    next()
 }
 
 //  middleware to authenticate user roles so as to restrict their access
 function authRole(role) {
     return async (req, res, next) => {
-      console.log(req.body);
-      if (req.body.role !== role) {
+      const { email } = req.body;
+      const user = await User.findOne({ email });
+      if (user.role !== role) {
         return res.status(401).send('Not allowed')
       }
   
