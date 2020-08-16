@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3000
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/userdb', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true,
 });
 
 app.use(express.json())
